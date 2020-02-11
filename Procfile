@@ -1,1 +1,1 @@
-web: gunicorn smartboxapi.wsgi --log-file -
+web: gunicorn smartboxapi.wsgi --preload --log-file -
