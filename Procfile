@@ -1,0 +1,1 @@
+web: gunicorn smartboxapi.wsgi --log-file -
