@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from api.views import UserViewSet, BoxViewSet, lock, unlock
+from api.views import UserViewSet, BoxViewSet, lock, unlock, locked
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -28,4 +28,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('box/<int:id>/lock', lock),
     path('box/<int:id>/unlock', unlock),
+    path('box/<int:id>/locked', locked),
 ]
