@@ -29,4 +29,6 @@ urlpatterns = [
     path('box/<int:id>/lock', lock),
     path('box/<int:id>/unlock', unlock),
     path('box/<int:id>/locked', locked),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken'))
 ]
