@@ -1,0 +1,503 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD47EE94E1E26ADC41C6F4EE /* libPods-SmartBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C984E5D8B1BE2FB6EB23F9 /* libPods-SmartBox.a */; };
+		F52FB5DE23C5CC620028806E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52FB5DD23C5CC620028806E /* User.swift */; };
+		F52FB5E123C5CF710028806E /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52FB5E023C5CF710028806E /* Box.swift */; };
+		F52FB5E323C5D12B0028806E /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52FB5E223C5D12B0028806E /* UserController.swift */; };
+		F52FB5E623C5D3170028806E /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52FB5E523C5D3170028806E /* URL.swift */; };
+		F53970CC23ED3D8400FAEC54 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53970CA23ED3D8400FAEC54 /* UserDetailViewController.swift */; };
+		F53970CD23ED3D8400FAEC54 /* UserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F53970CB23ED3D8400FAEC54 /* UserDetailViewController.xib */; };
+		F53970CF23F0978F00FAEC54 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53970CE23F0978F00FAEC54 /* LoginViewController.swift */; };
+		F5680A2523D75BFE00CACEC7 /* BoxListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5680A2423D75BFE00CACEC7 /* BoxListViewController.swift */; };
+		F5680A3E23D79F4300CACEC7 /* BoxListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5680A3C23D79F4300CACEC7 /* BoxListCell.swift */; };
+		F5680A3F23D79F4300CACEC7 /* BoxListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5680A3D23D79F4300CACEC7 /* BoxListCell.xib */; };
+		F5680A4123D7A26200CACEC7 /* BoxListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5680A4023D7A26200CACEC7 /* BoxListViewController.xib */; };
+		F57582E023FC963A00EFA3C4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57582DF23FC963A00EFA3C4 /* RegisterViewController.swift */; };
+		F5B40D2E23D8A1D100B1C0D1 /* BoxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B40D2C23D8A1D100B1C0D1 /* BoxDetailViewController.swift */; };
+		F5B40D2F23D8A1D100B1C0D1 /* BoxDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5B40D2D23D8A1D100B1C0D1 /* BoxDetailViewController.xib */; };
+		F5B7785B237018AC00280A00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B7785A237018AC00280A00 /* AppDelegate.swift */; };
+		F5B7785D237018AC00280A00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B7785C237018AC00280A00 /* SceneDelegate.swift */; };
+		F5B77862237018AC00280A00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B77860237018AC00280A00 /* Main.storyboard */; };
+		F5B77864237018B000280A00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5B77863237018B000280A00 /* Assets.xcassets */; };
+		F5B77867237018B000280A00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B77865237018B000280A00 /* LaunchScreen.storyboard */; };
+		F5BA8DF223CF357900904CD5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA8DF123CF357900904CD5 /* MapViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2455CD3278AB9579892F0F84 /* Pods-SmartBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBox.debug.xcconfig"; path = "Target Support Files/Pods-SmartBox/Pods-SmartBox.debug.xcconfig"; sourceTree = "<group>"; };
+		41A4871BA59BC0595864EC6A /* Pods-SmartBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBox.release.xcconfig"; path = "Target Support Files/Pods-SmartBox/Pods-SmartBox.release.xcconfig"; sourceTree = "<group>"; };
+		45C984E5D8B1BE2FB6EB23F9 /* libPods-SmartBox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartBox.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5296A4023FC89890037FDB3 /* FloatingPanel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FloatingPanel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F52FB5DD23C5CC620028806E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F52FB5E023C5CF710028806E /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		F52FB5E223C5D12B0028806E /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		F52FB5E523C5D3170028806E /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		F53970CA23ED3D8400FAEC54 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		F53970CB23ED3D8400FAEC54 /* UserDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailViewController.xib; sourceTree = "<group>"; };
+		F53970CE23F0978F00FAEC54 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F5680A2423D75BFE00CACEC7 /* BoxListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListViewController.swift; sourceTree = "<group>"; };
+		F5680A3C23D79F4300CACEC7 /* BoxListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListCell.swift; sourceTree = "<group>"; };
+		F5680A3D23D79F4300CACEC7 /* BoxListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxListCell.xib; sourceTree = "<group>"; };
+		F5680A4023D7A26200CACEC7 /* BoxListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxListViewController.xib; sourceTree = "<group>"; };
+		F57582DF23FC963A00EFA3C4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F5B40D2C23D8A1D100B1C0D1 /* BoxDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailViewController.swift; sourceTree = "<group>"; };
+		F5B40D2D23D8A1D100B1C0D1 /* BoxDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxDetailViewController.xib; sourceTree = "<group>"; };
+		F5B77857237018AC00280A00 /* SmartBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5B7785A237018AC00280A00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F5B7785C237018AC00280A00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F5B77861237018AC00280A00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F5B77863237018B000280A00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F5B77866237018B000280A00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F5B77868237018B000280A00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5BA8DF123CF357900904CD5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F5B77854237018AC00280A00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD47EE94E1E26ADC41C6F4EE /* libPods-SmartBox.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2EB9704864D400970EC1078D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F5296A4023FC89890037FDB3 /* FloatingPanel.framework */,
+				45C984E5D8B1BE2FB6EB23F9 /* libPods-SmartBox.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		465BF6B1A28B0898D7DE6915 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2455CD3278AB9579892F0F84 /* Pods-SmartBox.debug.xcconfig */,
+				41A4871BA59BC0595864EC6A /* Pods-SmartBox.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F52FB5DF23C5CC6E0028806E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F52FB5DD23C5CC620028806E /* User.swift */,
+				F52FB5E023C5CF710028806E /* Box.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F52FB5E423C5D1350028806E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F52FB5E223C5D12B0028806E /* UserController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F52FB5E723C5D31F0028806E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F52FB5E523C5D3170028806E /* URL.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F57EFC2F23D603850049F54F /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				F5680A3D23D79F4300CACEC7 /* BoxListCell.xib */,
+				F5680A4023D7A26200CACEC7 /* BoxListViewController.xib */,
+				F5B40D2D23D8A1D100B1C0D1 /* BoxDetailViewController.xib */,
+				F53970CB23ED3D8400FAEC54 /* UserDetailViewController.xib */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
+		F5B40D2B23D836B600B1C0D1 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				F5680A3C23D79F4300CACEC7 /* BoxListCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		F5B7784E237018AC00280A00 = {
+			isa = PBXGroup;
+			children = (
+				F5B77859237018AC00280A00 /* SmartBox */,
+				F5B77858237018AC00280A00 /* Products */,
+				465BF6B1A28B0898D7DE6915 /* Pods */,
+				2EB9704864D400970EC1078D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F5B77858237018AC00280A00 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5B77857237018AC00280A00 /* SmartBox.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5B77859237018AC00280A00 /* SmartBox */ = {
+			isa = PBXGroup;
+			children = (
+				F5B7785A237018AC00280A00 /* AppDelegate.swift */,
+				F5B7785C237018AC00280A00 /* SceneDelegate.swift */,
+				F5B77860237018AC00280A00 /* Main.storyboard */,
+				F5B40D2B23D836B600B1C0D1 /* TableViewCells */,
+				F57EFC2F23D603850049F54F /* UserInterface */,
+				F5BA8DF323CF366500904CD5 /* ViewControllers */,
+				F52FB5DF23C5CC6E0028806E /* Models */,
+				F52FB5E423C5D1350028806E /* Controllers */,
+				F52FB5E723C5D31F0028806E /* Extensions */,
+				F5B77863237018B000280A00 /* Assets.xcassets */,
+				F5B77865237018B000280A00 /* LaunchScreen.storyboard */,
+				F5B77868237018B000280A00 /* Info.plist */,
+			);
+			path = SmartBox;
+			sourceTree = "<group>";
+		};
+		F5BA8DF323CF366500904CD5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F53970CE23F0978F00FAEC54 /* LoginViewController.swift */,
+				F57582DF23FC963A00EFA3C4 /* RegisterViewController.swift */,
+				F5BA8DF123CF357900904CD5 /* MapViewController.swift */,
+				F5680A2423D75BFE00CACEC7 /* BoxListViewController.swift */,
+				F5B40D2C23D8A1D100B1C0D1 /* BoxDetailViewController.swift */,
+				F53970CA23ED3D8400FAEC54 /* UserDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F5B77856237018AC00280A00 /* SmartBox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5B77881237018B000280A00 /* Build configuration list for PBXNativeTarget "SmartBox" */;
+			buildPhases = (
+				F120DA69068D59A28961FD9E /* [CP] Check Pods Manifest.lock */,
+				F5B77853237018AC00280A00 /* Sources */,
+				F5B77854237018AC00280A00 /* Frameworks */,
+				F5B77855237018AC00280A00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartBox;
+			productName = SmartBox;
+			productReference = F5B77857237018AC00280A00 /* SmartBox.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F5B7784F237018AC00280A00 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = Vlada;
+				TargetAttributes = {
+					F5B77856237018AC00280A00 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = F5B77852237018AC00280A00 /* Build configuration list for PBXProject "SmartBox" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F5B7784E237018AC00280A00;
+			productRefGroup = F5B77858237018AC00280A00 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F5B77856237018AC00280A00 /* SmartBox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F5B77855237018AC00280A00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5680A4123D7A26200CACEC7 /* BoxListViewController.xib in Resources */,
+				F5B77867237018B000280A00 /* LaunchScreen.storyboard in Resources */,
+				F5680A3F23D79F4300CACEC7 /* BoxListCell.xib in Resources */,
+				F5B40D2F23D8A1D100B1C0D1 /* BoxDetailViewController.xib in Resources */,
+				F5B77864237018B000280A00 /* Assets.xcassets in Resources */,
+				F53970CD23ED3D8400FAEC54 /* UserDetailViewController.xib in Resources */,
+				F5B77862237018AC00280A00 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F120DA69068D59A28961FD9E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmartBox-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F5B77853237018AC00280A00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F53970CF23F0978F00FAEC54 /* LoginViewController.swift in Sources */,
+				F5680A2523D75BFE00CACEC7 /* BoxListViewController.swift in Sources */,
+				F52FB5E323C5D12B0028806E /* UserController.swift in Sources */,
+				F52FB5DE23C5CC620028806E /* User.swift in Sources */,
+				F5680A3E23D79F4300CACEC7 /* BoxListCell.swift in Sources */,
+				F52FB5E623C5D3170028806E /* URL.swift in Sources */,
+				F5B7785B237018AC00280A00 /* AppDelegate.swift in Sources */,
+				F5B7785D237018AC00280A00 /* SceneDelegate.swift in Sources */,
+				F52FB5E123C5CF710028806E /* Box.swift in Sources */,
+				F5BA8DF223CF357900904CD5 /* MapViewController.swift in Sources */,
+				F57582E023FC963A00EFA3C4 /* RegisterViewController.swift in Sources */,
+				F5B40D2E23D8A1D100B1C0D1 /* BoxDetailViewController.swift in Sources */,
+				F53970CC23ED3D8400FAEC54 /* UserDetailViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F5B77860237018AC00280A00 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B77861237018AC00280A00 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F5B77865237018B000280A00 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B77866237018B000280A00 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F5B7787F237018B000280A00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F5B77880237018B000280A00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F5B77882237018B000280A00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2455CD3278AB9579892F0F84 /* Pods-SmartBox.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K2VUQJUSUD;
+				INFOPLIST_FILE = SmartBox/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gyarab.SmartBox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F5B77883237018B000280A00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41A4871BA59BC0595864EC6A /* Pods-SmartBox.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K2VUQJUSUD;
+				INFOPLIST_FILE = SmartBox/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gyarab.SmartBox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F5B77852237018AC00280A00 /* Build configuration list for PBXProject "SmartBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5B7787F237018B000280A00 /* Debug */,
+				F5B77880237018B000280A00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5B77881237018B000280A00 /* Build configuration list for PBXNativeTarget "SmartBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5B77882237018B000280A00 /* Debug */,
+				F5B77883237018B000280A00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F5B7784F237018AC00280A00 /* Project object */;
+}

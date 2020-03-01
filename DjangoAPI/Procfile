@@ -1,0 +1,1 @@
+web: gunicorn smartboxrestapi.wsgi --preload --log-file -

@@ -1,0 +1,6 @@
+module Pods_SmartBox {
+  umbrella header "Pods-SmartBox-umbrella.h"
+
+  export *
+  module * { export * }
+}

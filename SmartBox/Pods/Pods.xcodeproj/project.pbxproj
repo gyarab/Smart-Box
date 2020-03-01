@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04BCC4300C3E4474AB6B604BDB22407B /* FloatingPanel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD17EECDB187661CFD118D6B8A6CE092 /* FloatingPanel-dummy.m */; };
+		0B532417993B44F791D09F52FB7FC0BE /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BD0443ADD0176B52AE103B9F13F68F /* Logger.swift */; };
+		0F28BF3A24DBFCD796415F36F0D78040 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9B45F06872017FA11448FD4986EEA /* UIExtensions.swift */; };
+		27A87C4A214B8EF0BDC10D55104A6633 /* Pods-SmartBox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5ED3D4A333054929457FB25EC4D4B2 /* Pods-SmartBox-dummy.m */; };
+		3A241AAE59714E59BC7839E3940A59A5 /* GrabberHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6959427DCCC416A5015407479408A3C5 /* GrabberHandleView.swift */; };
+		582933F3D82819EC4380FE2187DEB64E /* FloatingPanelCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D8E4477AD27611D8C4F6A86EE721D8 /* FloatingPanelCore.swift */; };
+		699E4A274770EDD380751FD88C1BC76D /* FloatingPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32C22B1A790714997E30B8D65466553 /* FloatingPanelController.swift */; };
+		75C5DA894E01CA9961DC4B23E098B60F /* FloatingPanelTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DE36FDAE44D5F42D6C80C37EBA3C7 /* FloatingPanelTransitioning.swift */; };
+		8CAB600ADDAA42BB7570E0FD739CAAE3 /* FloatingPanel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4C8AB8342B0A6386E00C83F4728343 /* FloatingPanel-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9BB042C42CB3DB6FBB5D7858ED556924 /* FloatingPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22735B6DA5D73D9FB54172D00C1F594C /* FloatingPanelView.swift */; };
+		B593A55C923BF7BD59502C65EE2DC2FD /* FloatingPanelBackdropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8AB7A4E1D20E3F9DD3169B0609152 /* FloatingPanelBackdropView.swift */; };
+		D0E9CA334DFD4DBD8E0B7C62657F69D4 /* Pods-SmartBox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 474FF3C2209769D29E954A7492AEEDED /* Pods-SmartBox-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D75152F6D85377E4F409521D7E2E457E /* FloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B42398F7020656B8BCD7EDAB89B8EF /* FloatingPanelLayout.swift */; };
+		EA8C30A013A75F132B5ABC27EAE9DB80 /* FloatingPanelBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9800209B73305F34FC1BA3A8C938952 /* FloatingPanelBehavior.swift */; };
+		FB5ED8A35EFDDDF3F4CE2869228AC125 /* FloatingPanelSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87C583554BACA18FB0927F6E8D8832D /* FloatingPanelSurfaceView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		31F24E6DDA34044A7F12F639939AF2A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4874E7E655CEB4C01E4572AD903AEA21;
+			remoteInfo = FloatingPanel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1555EB28308C08AFDD810613920B7ED8 /* FloatingPanel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FloatingPanel.modulemap; sourceTree = "<group>"; };
+		197F9871DE158A436425CDD7F96D11B0 /* libPods-SmartBox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SmartBox.a"; path = "libPods-SmartBox.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22735B6DA5D73D9FB54172D00C1F594C /* FloatingPanelView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingPanelView.swift; path = Framework/Sources/FloatingPanelView.swift; sourceTree = "<group>"; };
+		316F69C230869527B20DF1C185FFB643 /* FloatingPanel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FloatingPanel-prefix.pch"; sourceTree = "<group>"; };
+		44C3515C052FC2FD2C1DE05D5CB59CEE /* FloatingPanel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FloatingPanel.xcconfig; sourceTree = "<group>"; };
+		474FF3C2209769D29E954A7492AEEDED /* Pods-SmartBox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SmartBox-umbrella.h"; sourceTree = "<group>"; };
+		5064EFACE66EE815EFAF920592B20AF0 /* Pods-SmartBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartBox.debug.xcconfig"; sourceTree = "<group>"; };
+		6807FB50CD0549E916233E23862D15C1 /* Pods-SmartBox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SmartBox.modulemap"; sourceTree = "<group>"; };
+		6959427DCCC416A5015407479408A3C5 /* GrabberHandleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GrabberHandleView.swift; path = Framework/Sources/GrabberHandleView.swift; sourceTree = "<group>"; };
+		6FAAB7D3DE9B2564509ABD18687E938E /* libFloatingPanel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFloatingPanel.a; path = libFloatingPanel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		73B42398F7020656B8BCD7EDAB89B8EF /* FloatingPanelLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingPanelLayout.swift; path = Framework/Sources/FloatingPanelLayout.swift; sourceTree = "<group>"; };
+		79D8E4477AD27611D8C4F6A86EE721D8 /* FloatingPanelCore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingPanelCore.swift; path = Framework/Sources/FloatingPanelCore.swift; sourceTree = "<group>"; };
+		7A4C8AB8342B0A6386E00C83F4728343 /* FloatingPanel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FloatingPanel-umbrella.h"; sourceTree = "<group>"; };
+		89E9B45F06872017FA11448FD4986EEA /* UIExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIExtensions.swift; path = Framework/Sources/UIExtensions.swift; sourceTree = "<group>"; };
+		922DE36FDAE44D5F42D6C80C37EBA3C7 /* FloatingPanelTransitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingPanelTransitioning.swift; path = Framework/Sources/FloatingPanelTransitioning.swift; sourceTree = "<group>"; };
+		96D433C1BEBBACE64B091A434600AF70 /* Pods-SmartBox-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SmartBox-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DE3A2C79183FAB9275DF8C74479FF5F /* Pods-SmartBox-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SmartBox-acknowledgements.plist"; sourceTree = "<group>"; };
+		A32C22B1A790714997E30B8D65466553 /* FloatingPanelController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingPanelController.swift; path = Framework/Sources/FloatingPanelController.swift; sourceTree = "<group>"; };
+		A9800209B73305F34FC1BA3A8C938952 /* FloatingPanelBehavior.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingPanelBehavior.swift; path = Framework/Sources/FloatingPanelBehavior.swift; sourceTree = "<group>"; };
+		B125F6B4E171310E9DB779376A0B6CC3 /* Pods-SmartBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartBox.release.xcconfig"; sourceTree = "<group>"; };
+		C87C583554BACA18FB0927F6E8D8832D /* FloatingPanelSurfaceView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingPanelSurfaceView.swift; path = Framework/Sources/FloatingPanelSurfaceView.swift; sourceTree = "<group>"; };
+		C8BD0443ADD0176B52AE103B9F13F68F /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Framework/Sources/Logger.swift; sourceTree = "<group>"; };
+		FA5ED3D4A333054929457FB25EC4D4B2 /* Pods-SmartBox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SmartBox-dummy.m"; sourceTree = "<group>"; };
+		FD17EECDB187661CFD118D6B8A6CE092 /* FloatingPanel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FloatingPanel-dummy.m"; sourceTree = "<group>"; };
+		FFA8AB7A4E1D20E3F9DD3169B0609152 /* FloatingPanelBackdropView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingPanelBackdropView.swift; path = Framework/Sources/FloatingPanelBackdropView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		94DFBBA3478D0F5C2C151A6A9A04D7C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0A29A2FE0E464CFAFA49189D31AA31C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		38159CC4AF0F23A635204FEAB333997F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1555EB28308C08AFDD810613920B7ED8 /* FloatingPanel.modulemap */,
+				44C3515C052FC2FD2C1DE05D5CB59CEE /* FloatingPanel.xcconfig */,
+				FD17EECDB187661CFD118D6B8A6CE092 /* FloatingPanel-dummy.m */,
+				316F69C230869527B20DF1C185FFB643 /* FloatingPanel-prefix.pch */,
+				7A4C8AB8342B0A6386E00C83F4728343 /* FloatingPanel-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FloatingPanel";
+			sourceTree = "<group>";
+		};
+		6BA5CC361F76E17C84E562C3DAA41E1F /* FloatingPanel */ = {
+			isa = PBXGroup;
+			children = (
+				FFA8AB7A4E1D20E3F9DD3169B0609152 /* FloatingPanelBackdropView.swift */,
+				A9800209B73305F34FC1BA3A8C938952 /* FloatingPanelBehavior.swift */,
+				A32C22B1A790714997E30B8D65466553 /* FloatingPanelController.swift */,
+				79D8E4477AD27611D8C4F6A86EE721D8 /* FloatingPanelCore.swift */,
+				73B42398F7020656B8BCD7EDAB89B8EF /* FloatingPanelLayout.swift */,
+				C87C583554BACA18FB0927F6E8D8832D /* FloatingPanelSurfaceView.swift */,
+				922DE36FDAE44D5F42D6C80C37EBA3C7 /* FloatingPanelTransitioning.swift */,
+				22735B6DA5D73D9FB54172D00C1F594C /* FloatingPanelView.swift */,
+				6959427DCCC416A5015407479408A3C5 /* GrabberHandleView.swift */,
+				C8BD0443ADD0176B52AE103B9F13F68F /* Logger.swift */,
+				89E9B45F06872017FA11448FD4986EEA /* UIExtensions.swift */,
+				38159CC4AF0F23A635204FEAB333997F /* Support Files */,
+			);
+			name = FloatingPanel;
+			path = FloatingPanel;
+			sourceTree = "<group>";
+		};
+		705BAD29C757F83A30CD5329D36E9FA3 /* Pods-SmartBox */ = {
+			isa = PBXGroup;
+			children = (
+				6807FB50CD0549E916233E23862D15C1 /* Pods-SmartBox.modulemap */,
+				96D433C1BEBBACE64B091A434600AF70 /* Pods-SmartBox-acknowledgements.markdown */,
+				9DE3A2C79183FAB9275DF8C74479FF5F /* Pods-SmartBox-acknowledgements.plist */,
+				FA5ED3D4A333054929457FB25EC4D4B2 /* Pods-SmartBox-dummy.m */,
+				474FF3C2209769D29E954A7492AEEDED /* Pods-SmartBox-umbrella.h */,
+				5064EFACE66EE815EFAF920592B20AF0 /* Pods-SmartBox.debug.xcconfig */,
+				B125F6B4E171310E9DB779376A0B6CC3 /* Pods-SmartBox.release.xcconfig */,
+			);
+			name = "Pods-SmartBox";
+			path = "Target Support Files/Pods-SmartBox";
+			sourceTree = "<group>";
+		};
+		8B4B0F2AD41C382A95E05BEDC7525204 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6FAAB7D3DE9B2564509ABD18687E938E /* libFloatingPanel.a */,
+				197F9871DE158A436425CDD7F96D11B0 /* libPods-SmartBox.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C239C55E6ECD94F16ED1485F81C2D414 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6BA5CC361F76E17C84E562C3DAA41E1F /* FloatingPanel */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				C239C55E6ECD94F16ED1485F81C2D414 /* Pods */,
+				8B4B0F2AD41C382A95E05BEDC7525204 /* Products */,
+				FA78AED73425D29BB465C126288668CB /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA78AED73425D29BB465C126288668CB /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				705BAD29C757F83A30CD5329D36E9FA3 /* Pods-SmartBox */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0D1C09ED516ADFF9F04CB5E705C0B901 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CAB600ADDAA42BB7570E0FD739CAAE3 /* FloatingPanel-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8BFDDA0405E592CD52DFA8E1C092D92 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0E9CA334DFD4DBD8E0B7C62657F69D4 /* Pods-SmartBox-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		4874E7E655CEB4C01E4572AD903AEA21 /* FloatingPanel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CA0D9441252DB0308C5BA1F6CDD2ACE /* Build configuration list for PBXNativeTarget "FloatingPanel" */;
+			buildPhases = (
+				0D1C09ED516ADFF9F04CB5E705C0B901 /* Headers */,
+				53B7B5F246A462BB8517CE157895DC28 /* Sources */,
+				A0A29A2FE0E464CFAFA49189D31AA31C /* Frameworks */,
+				7FBAA07BAD8E1E54D052136E65DF54A2 /* Copy generated compatibility header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FloatingPanel;
+			productName = FloatingPanel;
+			productReference = 6FAAB7D3DE9B2564509ABD18687E938E /* libFloatingPanel.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		EB9206841FEF9206B4F5EB4867213565 /* Pods-SmartBox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68ED441E9C535B2F478C218477952A17 /* Build configuration list for PBXNativeTarget "Pods-SmartBox" */;
+			buildPhases = (
+				E8BFDDA0405E592CD52DFA8E1C092D92 /* Headers */,
+				9B4DD276089D14F2BEDA5BED97FC9DD2 /* Sources */,
+				94DFBBA3478D0F5C2C151A6A9A04D7C4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB2B27CF8E31CCBEC1CDAFF20760BA8F /* PBXTargetDependency */,
+			);
+			name = "Pods-SmartBox";
+			productName = "Pods-SmartBox";
+			productReference = 197F9871DE158A436425CDD7F96D11B0 /* libPods-SmartBox.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 8B4B0F2AD41C382A95E05BEDC7525204 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4874E7E655CEB4C01E4572AD903AEA21 /* FloatingPanel */,
+				EB9206841FEF9206B4F5EB4867213565 /* Pods-SmartBox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7FBAA07BAD8E1E54D052136E65DF54A2 /* Copy generated compatibility header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
+				"${PODS_ROOT}/Headers/Public/FloatingPanel/FloatingPanel.modulemap",
+				"${PODS_ROOT}/Headers/Public/FloatingPanel/FloatingPanel-umbrella.h",
+			);
+			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel-umbrella.h",
+				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/FloatingPanel/FloatingPanel.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/FloatingPanel/FloatingPanel-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53B7B5F246A462BB8517CE157895DC28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04BCC4300C3E4474AB6B604BDB22407B /* FloatingPanel-dummy.m in Sources */,
+				B593A55C923BF7BD59502C65EE2DC2FD /* FloatingPanelBackdropView.swift in Sources */,
+				EA8C30A013A75F132B5ABC27EAE9DB80 /* FloatingPanelBehavior.swift in Sources */,
+				699E4A274770EDD380751FD88C1BC76D /* FloatingPanelController.swift in Sources */,
+				582933F3D82819EC4380FE2187DEB64E /* FloatingPanelCore.swift in Sources */,
+				D75152F6D85377E4F409521D7E2E457E /* FloatingPanelLayout.swift in Sources */,
+				FB5ED8A35EFDDDF3F4CE2869228AC125 /* FloatingPanelSurfaceView.swift in Sources */,
+				75C5DA894E01CA9961DC4B23E098B60F /* FloatingPanelTransitioning.swift in Sources */,
+				9BB042C42CB3DB6FBB5D7858ED556924 /* FloatingPanelView.swift in Sources */,
+				3A241AAE59714E59BC7839E3940A59A5 /* GrabberHandleView.swift in Sources */,
+				0B532417993B44F791D09F52FB7FC0BE /* Logger.swift in Sources */,
+				0F28BF3A24DBFCD796415F36F0D78040 /* UIExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B4DD276089D14F2BEDA5BED97FC9DD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27A87C4A214B8EF0BDC10D55104A6633 /* Pods-SmartBox-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DB2B27CF8E31CCBEC1CDAFF20760BA8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FloatingPanel;
+			target = 4874E7E655CEB4C01E4572AD903AEA21 /* FloatingPanel */;
+			targetProxy = 31F24E6DDA34044A7F12F639939AF2A8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1422B121EAEAEA11307496903FA623C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		2B0C49ED4FED85FB84058721A9DE47E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44C3515C052FC2FD2C1DE05D5CB59CEE /* FloatingPanel.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FloatingPanel/FloatingPanel-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MODULEMAP_FILE = Headers/Public/FloatingPanel/FloatingPanel.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FloatingPanel;
+				PRODUCT_NAME = FloatingPanel;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4D9D7E19EA93A2F0F7448882715810D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44C3515C052FC2FD2C1DE05D5CB59CEE /* FloatingPanel.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FloatingPanel/FloatingPanel-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MODULEMAP_FILE = Headers/Public/FloatingPanel/FloatingPanel.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FloatingPanel;
+				PRODUCT_NAME = FloatingPanel;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E2BC8F4AA7FA86EAA327CE7A816C1B5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B125F6B4E171310E9DB779376A0B6CC3 /* Pods-SmartBox.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SmartBox/Pods-SmartBox.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E5164D57D42A14CDE1262EF7A97D4202 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5064EFACE66EE815EFAF920592B20AF0 /* Pods-SmartBox.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SmartBox/Pods-SmartBox.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED7888FA6713EABBF66D26A8003AD1CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED7888FA6713EABBF66D26A8003AD1CA /* Debug */,
+				1422B121EAEAEA11307496903FA623C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68ED441E9C535B2F478C218477952A17 /* Build configuration list for PBXNativeTarget "Pods-SmartBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5164D57D42A14CDE1262EF7A97D4202 /* Debug */,
+				E2BC8F4AA7FA86EAA327CE7A816C1B5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CA0D9441252DB0308C5BA1F6CDD2ACE /* Build configuration list for PBXNativeTarget "FloatingPanel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D9D7E19EA93A2F0F7448882715810D4 /* Debug */,
+				2B0C49ED4FED85FB84058721A9DE47E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
