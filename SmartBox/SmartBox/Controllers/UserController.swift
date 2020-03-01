@@ -131,7 +131,7 @@ class UserController {
         task.resume()
     }
     
-    func unlockBox(boxID: Int, completion: @escaping (Bool?) -> Void) {
+    func unlockBox(boxID: Int) {
         let orderURL = baseURL.appendingPathComponent("box/\(boxID)/unlock") //vytvoreni url
         
         //configurace urlRequest
@@ -139,18 +139,11 @@ class UserController {
         request.httpMethod = "POST"
         request.setValue("Token \(UserController.token!)", forHTTPHeaderField: "Authorization")
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            let jsonDecoder = JSONDecoder()
-                if let data = data, let success = try? jsonDecoder.decode(Bool.self, from: data) {
-                    completion(success)
-            } else {
-                completion(nil)
-            }
-        }
+        let task = URLSession.shared.dataTask(with: request)
         task.resume()
     }
     
-    func borrowBox(boxID: Int, completion: @escaping (Bool?) -> Void) {
+    func borrowBox(boxID: Int) {
         let orderURL = baseURL.appendingPathComponent("box/\(boxID)/borrow") //vytvoreni url
         
         //configurace urlRequest
@@ -158,18 +151,11 @@ class UserController {
         request.httpMethod = "POST"
         request.setValue("Token \(UserController.token!)", forHTTPHeaderField: "Authorization")
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            let jsonDecoder = JSONDecoder()
-                if let data = data, let success = try? jsonDecoder.decode(Bool.self, from: data) {
-                    completion(success)
-            } else {
-                completion(nil)
-            }
-        }
+        let task = URLSession.shared.dataTask(with: request)
         task.resume()
     }
     
-    func returnBox(boxID: Int, completion: @escaping (Bool?) -> Void) {
+    func returnBox(boxID: Int) {
         let orderURL = baseURL.appendingPathComponent("box/\(boxID)/return") //vytvoreni url
         
         //configurace urlRequest
@@ -177,14 +163,7 @@ class UserController {
         request.httpMethod = "POST"
         request.setValue("Token \(UserController.token!)", forHTTPHeaderField: "Authorization")
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            let jsonDecoder = JSONDecoder()
-                if let data = data, let success = try? jsonDecoder.decode(Bool.self, from: data) {
-                    completion(success)
-            } else {
-                completion(nil)
-            }
-        }
+        let task = URLSession.shared.dataTask(with: request)
         task.resume()
     }
     

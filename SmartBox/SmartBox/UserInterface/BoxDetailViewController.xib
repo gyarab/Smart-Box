@@ -9,12 +9,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BoxDetailViewController" customModule="SmartBox" customModuleProvider="target">
             <connections>
+                <outlet property="borrowIcon" destination="3Ji-VX-E8i" id="scy-JG-zqE"/>
+                <outlet property="borrowLabel" destination="6En-SB-jfg" id="m8O-67-Gnh"/>
                 <outlet property="locationLabel" destination="PN7-Ur-3XJ" id="tv1-AT-n9W"/>
                 <outlet property="lockButtonView" destination="ekH-b4-SPA" id="aC1-ye-HbO"/>
                 <outlet property="nameLabel" destination="83f-dq-R80" id="EtV-Jw-8BP"/>
+                <outlet property="unlockBcView" destination="PbW-QA-JB8" id="yce-ts-XJ6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="buttonViews" destination="X7C-Wj-OWN" collectionClass="NSMutableArray" id="WZm-LD-xKc"/>
                 <outletCollection property="buttonViews" destination="Zu9-xf-gzv" collectionClass="NSMutableArray" id="Rad-dY-qnH"/>
+                <outletCollection property="buttonViews" destination="PbW-QA-JB8" collectionClass="NSMutableArray" id="1IK-2l-NX2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -36,7 +40,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="133" height="133"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                             <connections>
-                                <action selector="OpenCloseButtonTapped:" destination="-1" eventType="touchUpInside" id="TI9-pu-iqg"/>
+                                <action selector="unlockButtonTapped:" destination="-1" eventType="touchUpInside" id="TI9-pu-iqg"/>
                             </connections>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7PI-Dq-LaE">
@@ -125,14 +129,14 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PvA-hP-LIr">
                                     <rect key="frame" x="10" y="20" width="163" height="64"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Ji-VX-E8i">
-                                            <rect key="frame" x="0.0" y="0.5" width="29.5" height="28"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.badge.plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Ji-VX-E8i">
+                                            <rect key="frame" x="0.0" y="0.5" width="29.5" height="28.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="3Ji-VX-E8i" secondAttribute="height" multiplier="1:1" id="jZE-0Q-2ZE"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6En-SB-jfg">
-                                            <rect key="frame" x="0.0" y="34.5" width="57.5" height="29.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Borrow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6En-SB-jfg">
+                                            <rect key="frame" x="0.0" y="34.5" width="59.5" height="29.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -142,7 +146,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WV9-bB-qn0">
                                     <rect key="frame" x="0.0" y="0.0" width="183" height="104"/>
                                     <connections>
-                                        <action selector="OpenCloseButtonTapped:" destination="-1" eventType="touchUpInside" id="dxK-gT-6jl"/>
+                                        <action selector="borrowButtonTapped:" destination="-1" eventType="touchUpInside" id="78I-eA-J6e"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -160,9 +164,69 @@
                         </view>
                     </subviews>
                 </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="57x-Ql-L90">
+                    <rect key="frame" x="20" y="442.5" width="374" height="104"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PbW-QA-JB8" userLabel="Unlock">
+                            <rect key="frame" x="0.0" y="0.0" width="183" height="104"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VXG-I4-rnG">
+                                    <rect key="frame" x="10" y="20" width="163" height="64"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0KF-mH-HtM">
+                                            <rect key="frame" x="0.0" y="0.5" width="29.5" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="0KF-mH-HtM" secondAttribute="height" multiplier="1:1" id="Eys-JA-XNA"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-gH-6uO">
+                                            <rect key="frame" x="0.0" y="34.5" width="57.5" height="29.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWT-BT-Vw2">
+                                    <rect key="frame" x="0.0" y="0.0" width="183" height="104"/>
+                                    <connections>
+                                        <action selector="unlockButtonTapped:" destination="-1" eventType="touchUpInside" id="rsd-nY-MuD"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="VXG-I4-rnG" secondAttribute="trailing" constant="10" id="6FT-aq-H5N"/>
+                                <constraint firstItem="UWT-BT-Vw2" firstAttribute="leading" secondItem="PbW-QA-JB8" secondAttribute="leading" id="BUe-te-QIq"/>
+                                <constraint firstItem="VXG-I4-rnG" firstAttribute="leading" secondItem="PbW-QA-JB8" secondAttribute="leading" constant="10" id="GrI-AB-eMv"/>
+                                <constraint firstItem="VXG-I4-rnG" firstAttribute="top" secondItem="PbW-QA-JB8" secondAttribute="top" constant="20" id="QGx-v4-zHr"/>
+                                <constraint firstAttribute="width" secondItem="PbW-QA-JB8" secondAttribute="height" multiplier="44:25" id="QbU-IY-SEf"/>
+                                <constraint firstItem="UWT-BT-Vw2" firstAttribute="top" secondItem="PbW-QA-JB8" secondAttribute="top" id="aK4-8R-l44"/>
+                                <constraint firstAttribute="trailing" secondItem="UWT-BT-Vw2" secondAttribute="trailing" id="cPb-Hd-LTX"/>
+                                <constraint firstAttribute="bottom" secondItem="UWT-BT-Vw2" secondAttribute="bottom" id="dhS-e5-0Q7"/>
+                                <constraint firstAttribute="bottom" secondItem="VXG-I4-rnG" secondAttribute="bottom" constant="20" id="f5x-Nt-ETD"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skS-fb-rVV" userLabel="Directions">
+                            <rect key="frame" x="191" y="0.0" width="183" height="104"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSH-TS-h8I">
+                                    <rect key="frame" x="0.0" y="0.0" width="183" height="104"/>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="MSH-TS-h8I" secondAttribute="bottom" id="BGd-Rh-djM"/>
+                                <constraint firstAttribute="width" secondItem="skS-fb-rVV" secondAttribute="height" multiplier="44:25" id="Gh9-47-Zik"/>
+                                <constraint firstItem="MSH-TS-h8I" firstAttribute="leading" secondItem="skS-fb-rVV" secondAttribute="leading" id="J2U-GP-v20"/>
+                                <constraint firstAttribute="trailing" secondItem="MSH-TS-h8I" secondAttribute="trailing" id="mbe-Wl-uvV"/>
+                                <constraint firstItem="MSH-TS-h8I" firstAttribute="top" secondItem="skS-fb-rVV" secondAttribute="top" id="mc6-cj-oNs"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="57x-Ql-L90" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="05N-uY-HDC"/>
                 <constraint firstItem="wPh-wi-C7x" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="B8H-IX-qQb"/>
                 <constraint firstItem="rz2-0j-Cwd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BD5-mh-uLq"/>
                 <constraint firstAttribute="trailing" secondItem="998-FU-wY8" secondAttribute="trailing" constant="20" id="Bgf-WF-aNL"/>
@@ -170,8 +234,10 @@
                 <constraint firstItem="wPh-wi-C7x" firstAttribute="top" secondItem="rz2-0j-Cwd" secondAttribute="bottom" constant="30" id="Mvu-uf-zLy"/>
                 <constraint firstItem="998-FU-wY8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="OIQ-nZ-lOy"/>
                 <constraint firstAttribute="trailing" secondItem="wPh-wi-C7x" secondAttribute="trailing" constant="20" id="SAz-UF-Lpt"/>
+                <constraint firstItem="57x-Ql-L90" firstAttribute="top" secondItem="wPh-wi-C7x" secondAttribute="bottom" constant="20" id="YQ9-4H-cUz"/>
                 <constraint firstItem="ekH-b4-SPA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="cGh-vn-SfE"/>
                 <constraint firstItem="rz2-0j-Cwd" firstAttribute="top" secondItem="ekH-b4-SPA" secondAttribute="bottom" constant="20" id="mlK-oA-xaB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="57x-Ql-L90" secondAttribute="trailing" constant="20" id="oau-0e-lXL"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -182,5 +248,6 @@
         <image name="arrowshape.turn.up.right" catalog="system" width="64" height="52"/>
         <image name="lock" catalog="system" width="64" height="64"/>
         <image name="lock.fill" catalog="system" width="64" height="64"/>
+        <image name="person.crop.circle.badge.plus" catalog="system" width="64" height="50"/>
     </resources>
 </document>

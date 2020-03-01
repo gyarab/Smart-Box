@@ -29,7 +29,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                             self.dismiss(animated: true) {
                                 previousController!.performSegue(withIdentifier: "loginSeque", sender: nil)
                             }
-            }   }   }   }
+                        } else {
+                            print("connection failed")
+                        }
+                    }
+                }
+            }
         } else {
             UserController.shared.fetchTestData()
             if let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {

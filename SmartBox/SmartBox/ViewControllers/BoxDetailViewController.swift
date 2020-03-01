@@ -15,6 +15,9 @@ class BoxDetailViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var lockButtonView: UIView!
     @IBOutlet var buttonViews: [UIView]!
+    @IBOutlet weak var unlockBcView: UIView!
+    @IBOutlet weak var borrowLabel: UILabel!
+    @IBOutlet weak var borrowIcon: UIImageView!
     
     @IBAction func cancelButtonAction(_ sender: Any) {
         NotificationCenter.default.post(name: BoxDetailViewController.cancelDetailAction, object: nil)
@@ -23,28 +26,54 @@ class BoxDetailViewController: UIViewController {
         print("directons button tapped")
         transferToMaps()
     }
-    @IBAction func OpenCloseButtonTapped(_ sender: Any) {
+    @IBAction func unlockButtonTapped(_ sender: Any) {
         print("open button tapped")
         //open box process
+    }
+    @IBAction func borrowButtonTapped(_ sender: Any) {
+        if UserController.offlineMode == false {
+            if myBox() {
+                UserController.shared.returnBox(boxID: box!.id)
+            } else {
+                UserController.shared.borrowBox(boxID: box!.id)
+            }
+            UserController.shared.getUser { (user) in
+                UserController.shared.user = user
+            }
+        } else {
+            if myBox() {
+                UserController.shared.nearbyBoxes.removeAll{$0.id == self.box!.id}
+                box!.locked = false
+                UserController.shared.nearbyBoxes.append(box!)
+                UserController.shared.user?.Boxes.removeAll{$0.id == self.box!.id}
+            } else {
+                UserController.shared.nearbyBoxes.removeAll{$0.id == self.box!.id}
+                box!.locked = true
+                UserController.shared.nearbyBoxes.append(box!)
+                UserController.shared.user?.Boxes.append(self.box!)
+            }
+        }
+        print("new index \(index!),\n all boxes \(UserController.shared.getBoxes())")
+        updateUI()
     }
     
     var index: Int?
     let boxes = UserController.shared.getBoxes()
     static let cancelDetailAction = Notification.Name("BoxDetailViewController.cancelTapped")
+    var box: Box?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(initPanel), name: BoxListViewController.tableCellAction, object: nil)
-        print("observer added")
         // Do any additional setup after loading the view.
     }
     
     @objc func initPanel() {
         index = BoxListViewController.boxChosen
-        if let index = index {
-            nameLabel.text = boxes[index].name
-            locationLabel.text = String(boxes[index].id)
-        }
+        box = boxes[index!]
+        nameLabel.text = box!.name
+        locationLabel.text = String(box!.id)
+        
         lockButtonView.layer.cornerRadius = lockButtonView.bounds.width / 2
         lockButtonView.layer.shadowPath = UIBezierPath(roundedRect: lockButtonView.bounds, cornerRadius: lockButtonView.bounds.width / 2).cgPath
         lockButtonView.layer.shadowColor = UIColor.black.cgColor
@@ -63,6 +92,19 @@ class BoxDetailViewController: UIViewController {
             view.layer.shadowOffset = .zero
             view.layer.shadowRadius = 10
         }
+        updateUI()
+    }
+    
+    func updateUI() {
+        if myBox() {
+            borrowLabel.text = "Return"
+            unlockBcView.isHidden = false
+            borrowIcon.image = UIImage(systemName: "person.crop.circle.badge.minus")
+        } else {
+            unlockBcView.isHidden = true
+            borrowLabel.text = "Borrow"
+            borrowIcon.image = UIImage(systemName: "person.crop.circle.badge.plus")
+        }
     }
     
     func transferToMaps() {
@@ -75,6 +117,15 @@ class BoxDetailViewController: UIViewController {
         let mapItem = MKMapItem(placemark: placeMark)
         mapItem.name = boxes[index].name
         mapItem.openInMaps(launchOptions: options)
+    }
+    
+    func myBox() -> Bool {
+        if (UserController.shared.user?.Boxes.contains(where: { (box) -> Bool in
+            return box.id == self.box!.id
+        }))! {
+            return true
+        }
+        return false
     }
     
     /*

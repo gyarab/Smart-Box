@@ -149,6 +149,13 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        user = UserController.shared.user!
+        updateUI()
+        tableView.reloadData()
+    }
+    
     func updateUI() {
         nameLabel.text = user.name
         emailLabel.text = user.email
