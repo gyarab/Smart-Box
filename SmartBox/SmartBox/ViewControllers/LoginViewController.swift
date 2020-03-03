@@ -23,7 +23,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             UserController.shared.user = user
                             print("connection successfull")
                             self.performSegue(withIdentifier: "loginSeque", sender: nil)
-            }   }   }   }
+                        } else {
+                            print("user not logged")
+                        }
+                        
+                    }
+                    
+                }
+            }
         } else {
             UserController.shared.fetchTestData()
             if emailTextField.text != "" && passwordTextField.text != "" {

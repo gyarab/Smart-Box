@@ -12,9 +12,8 @@ struct User: Codable {
     let id: Int
     var name: String
     var email: String
-    var password: String
+    var password: String?
     var Boxes: [Box]
-    var admin = false
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -22,6 +21,15 @@ struct User: Codable {
         case email
         case password
         case Boxes
-        case admin
     }
+}
+
+struct RegisterUser: Codable {
+    let name: String
+    let email: String
+    let id: Int
+}
+
+struct Token: Codable {
+    let auth_token: String
 }

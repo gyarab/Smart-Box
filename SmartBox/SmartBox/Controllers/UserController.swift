@@ -14,7 +14,7 @@ class UserController {
     var nearbyBoxes: [Box] = []
     static let shared = UserController()
     let baseURL = URL(string: "https://polar-plateau-63565.herokuapp.com/")!
-    static var offlineMode = true
+    static var offlineMode = false
     static var token: String?
     
     func loginUser(email: String, password: String, completion: @escaping (User?) -> Void) {
@@ -32,10 +32,12 @@ class UserController {
         let jsonData = try? jsonEncoder.encode(data)
         request.httpBody = jsonData
         
+        //zahájení session
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             let jsonDecoder = JSONDecoder()
-                if let data = data, let token = try? jsonDecoder.decode(String.self, from: data) {
-                    UserController.token = token
+                if let data = data, let token = try? jsonDecoder.decode(Token.self, from: data) {
+                    UserController.token = token.auth_token
+                    print("token \(String(describing: UserController.token))")
                     self.getUser { (user) in
                         completion(user)
                     }
@@ -66,10 +68,31 @@ class UserController {
         request.httpMethod = "POST"
         request.setValue("Authorization", forHTTPHeaderField: UserController.token ?? "")
         
+        print("get user with token \(String(describing: UserController.token))")
+        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             let jsonDecoder = JSONDecoder()
                 if let data = data, let user = try? jsonDecoder.decode(User.self, from: data) {
                     completion(user)
+            } else {
+                completion(nil)
+            }
+        }
+        task.resume()
+    }
+    
+    func getNearby(completion: @escaping ([Box]?) -> Void) {
+        let orderURL = baseURL.appendingPathComponent("boxes/") //vytvoreni url
+        
+        //configurace urlRequest
+        var request = URLRequest(url: orderURL)
+        request.httpMethod = "GET"
+        request.setValue("Authorization", forHTTPHeaderField: UserController.token ?? "")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let jsonDecoder = JSONDecoder()
+                if let data = data, let boxes = try? jsonDecoder.decode([Box].self, from: data) {
+                    completion(boxes)
             } else {
                 completion(nil)
             }
@@ -95,7 +118,7 @@ class UserController {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             let jsonDecoder = JSONDecoder()
-            if let data = data, let _ = try? jsonDecoder.decode(Bool.self, from: data) {
+            if let data = data, let _ = try? jsonDecoder.decode(RegisterUser.self, from: data) {
                 self.loginUser(email: email, password: password) { (user) in
                     completion(user)
                 }
@@ -200,12 +223,11 @@ class UserController {
                          name: "Vladimir Ekart",
                          email: "vladimir.ekart@email.cz",
                          password: "MyPassword",
-                         Boxes: [Box(possition: Possition(lattitude: 50.0998, longtitude: 14.3601), locked: true, name: "SmartBox", id: 1),
-                                 Box(possition: Possition(lattitude: 50.0510, longtitude: 14.3336), locked: true, name: "SmartBox 2", id: 2)],
-                                 admin: true)
-        self.nearbyBoxes = [Box(possition: Possition(lattitude: 50.0751, longtitude: 14.4375), locked: false, name: "MyBox", id: 3),
-                            Box(possition: Possition(lattitude: 50.0651, longtitude: 14.4000), locked: false, name: "PragueBox", id: 4),
-                            Box(possition: Possition(lattitude: 50.0998, longtitude: 14.3601), locked: true, name: "SmartBox", id: 1),
-                            Box(possition: Possition(lattitude: 50.0510, longtitude: 14.3336), locked: true, name: "SmartBox 2", id: 2)]
+                         Boxes: [Box(lattitude: 50.0998, longtitude: 14.3601, locked: true, name: "SmartBox", id: 1, curren_owner: 1),
+                                 Box(lattitude: 50.0510, longtitude: 14.3336, locked: true, name: "SmartBox 2", id: 2, curren_owner: 1)])
+        self.nearbyBoxes = [Box(lattitude: 50.0751, longtitude: 14.4375, locked: false, name: "MyBox", id: 3, curren_owner: nil),
+                            Box(lattitude: 50.0651, longtitude: 14.4000, locked: false, name: "PragueBox", id: 4, curren_owner: nil),
+                            Box(lattitude: 50.0998, longtitude: 14.3601, locked: true, name: "SmartBox", id: 1, curren_owner: nil),
+                            Box(lattitude: 50.0510, longtitude: 14.3336, locked: true, name: "SmartBox 2", id: 2, curren_owner: nil)]
     }
 }

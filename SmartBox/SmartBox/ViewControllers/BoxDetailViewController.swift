@@ -109,7 +109,7 @@ class BoxDetailViewController: UIViewController {
     
     func transferToMaps() {
         guard let index = index else { return }
-        let coordinates = CLLocationCoordinate2D(latitude: CLLocationDegrees(boxes[index].possition.lattitude), longitude: CLLocationDegrees(boxes[index].possition.longtitude))
+        let coordinates = CLLocationCoordinate2D(latitude: CLLocationDegrees(boxes[index].lattitude), longitude: CLLocationDegrees(boxes[index].longtitude))
         let region = MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: region.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: region.span)]
         

@@ -9,13 +9,10 @@
 import Foundation
 
 struct Box: Codable {
-    var possition: Possition
+    var lattitude: Float
+    var longtitude: Float
     var locked: Bool
     var name: String
     let id: Int
-}
-
-struct Possition: Codable {
-    var lattitude: Float
-    var longtitude: Float
+    let curren_owner: Int?
 }

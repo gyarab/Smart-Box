@@ -122,7 +122,6 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 UserController.shared.user = updatedUser
             }
             user = UserController.shared.user!
-            print("password updated \(user.password)")
         }
         currentPasswordTF.text = ""
         newPasswordTF.text = ""

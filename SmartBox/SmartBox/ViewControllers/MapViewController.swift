@@ -38,6 +38,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         NotificationCenter.default.addObserver(self, selector: #selector(unhighlightBox), name: BoxDetailViewController.cancelDetailAction, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideUserDetail), name: UserDetailViewController.cancelDetailAction, object: nil)
 
+        UserController.shared.getNearby { (boxes) in
+            DispatchQueue.main.async {
+                if let boxes = boxes {
+                    UserController.shared.nearbyBoxes = boxes
+                    print("boxes added from server")
+                }
+            }
+        }
         
         bcUserView.layer.cornerRadius = 10
         bcUserView.alpha = 0.90
@@ -151,7 +159,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func moveToBox() {
         let index = BoxListViewController.boxChosen!
         let boxes = UserController.shared.getBoxes()
-        let boxLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(boxes[index].possition.lattitude), longitude: CLLocationDegrees(boxes[index].possition.longtitude))
+        let boxLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(boxes[index].lattitude), longitude: CLLocationDegrees(boxes[index].longtitude))
         mapView.setCenter(boxLocation, animated: true)
         let region = MKCoordinateRegion(center: boxLocation, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         mapView.setRegion(region, animated: true)
@@ -199,7 +207,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         for box in UserController.shared.getBoxes() {
             let annotation = MKPointAnnotation()
             annotation.title = box.name
-            annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(box.possition.lattitude), longitude: CLLocationDegrees(box.possition.longtitude))
+            annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(box.lattitude), longitude: CLLocationDegrees(box.longtitude))
             mapView.addAnnotation(annotation)
             self.annotations.append(annotation)
         }
