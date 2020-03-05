@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractUser
+from django.conf import settings
+from django.db import IntegrityError
 
 class UserManager(BaseUserManager):
     def create_user(self, name, email, password, is_admin=False, is_staff=False, is_active=True):
@@ -10,20 +12,26 @@ class UserManager(BaseUserManager):
         if not name:
             raise ValueError("User must have a name")
 
-        user = self.model(
-            email=self.normalize_email(email)
-        )
-        user.name = name
-        user.set_password(password)
-        user.admin = is_admin
-        user.staff = is_staff
-        user.active = is_active
-        user.save(using=self._db)
-        return user
+        try:
+            user = self.model(
+                email=self.normalize_email(email)
+            )
+            user.username = email
+            user.name = name
+            user.set_password(password)
+            user.admin = is_admin
+            user.staff = is_staff
+            user.active = is_active
+            user.save()
+            return user
+        except IntegrityError as e:
+            message = '^&*^*&Database error:' + str(e.__cause__)
+            print(message)
 
 class User(AbstractUser):
     name = models.CharField(max_length=50)
     email = models.EmailField(unique=True, blank=False)
+    boxes = models.CharField(max_length=50, blank=True, default=None, null=True)
     REQUIRED_FIELDS = ['name']
     USERNAME_FIELD = 'email'
 
@@ -34,9 +42,11 @@ class User(AbstractUser):
         verbose_name_plural = "Users"
 
 class Box(models.Model):
-    location = models.CharField(max_length=50)
+    lattitude = models.FloatField()
+    longtitude = models.FloatField()
     locked = models.BooleanField(default=True)
-    current_owner = models.ForeignKey(User, default=None, blank=True, null=True, on_delete=models.PROTECT)
+    name = models.CharField(max_length=50)
+    current_owner = models.ForeignKey(settings.AUTH_USER_MODEL, default=None, blank=True, null=True, on_delete=models.PROTECT)
 
     class Meta:
         verbose_name = "Box"
