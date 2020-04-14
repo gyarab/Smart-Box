@@ -34,6 +34,7 @@ class BoxListViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
+        print("list boxes reloaded")
     }
 
     // MARK: - Table view data source

@@ -11,96 +11,14 @@ import Foundation
 class UserController {
     
     var user: User?
-    var nearbyBoxes: [Box] = []
+    private var nearbyBoxes: [Box] = []
+    private var allBoxes: [Box] = []
     static let shared = UserController()
-    let baseURL = URL(string: "https://polar-plateau-63565.herokuapp.com/")!
+    private let baseURL = URL(string: "https://polar-plateau-63565.herokuapp.com/")!
     static var offlineMode = false
-    static var token: String?
+    private static var token: String?
     
-    func loginUser(email: String, password: String, completion: @escaping (User?) -> Void) {
-        let orderURL = baseURL.appendingPathComponent("auth/token/login") //vytvoreni url
-        
-        //configurace urlRequest
-        var request = URLRequest(url: orderURL)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let data: [String: String] = ["email": email,
-                                      "password": password]
-        
-        let jsonEncoder = JSONEncoder()
-        let jsonData = try? jsonEncoder.encode(data)
-        request.httpBody = jsonData
-        
-        //zahájení session
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            let jsonDecoder = JSONDecoder()
-                if let data = data, let token = try? jsonDecoder.decode(Token.self, from: data) {
-                    UserController.token = token.auth_token
-                    print("token \(String(describing: UserController.token))")
-                    self.getUser { (user) in
-                        completion(user)
-                    }
-            } else {
-                completion(nil)
-            }
-        }
-        task.resume()
-    }
-    
-    func logoutUser() {
-        let orderURL = baseURL.appendingPathComponent("auth/token/logout") //vytvoreni url
-        
-        //configurace urlRequest
-        var request = URLRequest(url: orderURL)
-        request.httpMethod = "POST"
-        request.setValue("Token \(UserController.token!)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask(with: request)
-        task.resume()
-    }
-    
-    func getUser(completion: @escaping (User?) -> Void) {
-        let orderURL = baseURL.appendingPathComponent("auth/token/login") //vytvoreni url
-        
-        //configurace urlRequest
-        var request = URLRequest(url: orderURL)
-        request.httpMethod = "POST"
-        request.setValue("Authorization", forHTTPHeaderField: UserController.token ?? "")
-        
-        print("get user with token \(String(describing: UserController.token))")
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            let jsonDecoder = JSONDecoder()
-                if let data = data, let user = try? jsonDecoder.decode(User.self, from: data) {
-                    completion(user)
-            } else {
-                completion(nil)
-            }
-        }
-        task.resume()
-    }
-    
-    func getNearby(completion: @escaping ([Box]?) -> Void) {
-        let orderURL = baseURL.appendingPathComponent("boxes/") //vytvoreni url
-        
-        //configurace urlRequest
-        var request = URLRequest(url: orderURL)
-        request.httpMethod = "GET"
-        request.setValue("Authorization", forHTTPHeaderField: UserController.token ?? "")
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            let jsonDecoder = JSONDecoder()
-                if let data = data, let boxes = try? jsonDecoder.decode([Box].self, from: data) {
-                    completion(boxes)
-            } else {
-                completion(nil)
-            }
-        }
-        task.resume()
-    }
-    
-    func registerUser(email: String, password: String, name: String, completion: @escaping (User?) -> Void) {
+    func registerUser(email: String, password: String, name: String, completion: @escaping (Bool) -> Void) {
         let orderURL = baseURL.appendingPathComponent("auth/users/") //vytvoreni url
         
         //configurace urlRequest
@@ -118,10 +36,117 @@ class UserController {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             let jsonDecoder = JSONDecoder()
-            if let data = data, let _ = try? jsonDecoder.decode(RegisterUser.self, from: data) {
-                self.loginUser(email: email, password: password) { (user) in
-                    completion(user)
-                }
+            if let data = data, let _ = try? jsonDecoder.decode(ComUser.self, from: data) {
+                print("register checkpoint")
+                self.loginUser(email: email, password: password, completion: { (_) in
+                    completion(true)
+                })
+            } else {
+                print("error: \(String(describing: error)) data: \(String(describing: data))")
+                completion(false)
+            }
+        }
+        task.resume()
+    }
+    
+    
+    func loginUser(email: String, password: String, completion: @escaping (Bool) -> Void) {
+        let orderURL = baseURL.appendingPathComponent("auth/token/login/") //vytvoreni url
+        
+        //configurace urlRequest
+        var request = URLRequest(url: orderURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let data: [String: String] = ["email": email,
+                                      "password": password]
+        
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try? jsonEncoder.encode(data)
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let jsonDecoder = JSONDecoder()
+                if let data = data, let token = try? jsonDecoder.decode(Token.self, from: data) {
+                    print("login checkpoint")
+                    UserController.token = token.auth_token
+                    self.loadAll {
+                        completion(true)
+                    }
+                } else {
+                    completion(false)
+            }
+        }
+        task.resume()
+    }
+    
+    
+    func loadAll(completion: @escaping () -> Void) {
+        self.getNearby { () in
+            self.getUser { () in
+                self.mergeBoxData()
+                completion()
+                print("actual user: \(String(describing: self.user))\n boxes nearby: \(self.allBoxes)")
+            }
+        }
+    }
+    
+    func getNearby(completion: @escaping () -> Void) {
+        let orderURL = baseURL.appendingPathComponent("boxes/")
+        print("token \(String(describing: UserController.token))")
+        
+        var request = URLRequest(url: orderURL)
+        request.httpMethod = "GET"
+        request.setValue("Token \(UserController.token ?? "")", forHTTPHeaderField: "Authorization")
+
+        
+        //navazani spojeni se serverem - konfigurace + ziskani dat
+        let task = URLSession.shared.dataTask(with: request) { (data, responce, error) in
+            let jsonDecoder = JSONDecoder()
+            if let data = data, let nearbyBoxes = try? jsonDecoder.decode([Box].self, from: data) {
+                print("getNearby checkpoint")
+                self.nearbyBoxes = nearbyBoxes
+                completion()
+            }
+        }
+        //zahajeni spojeni
+        task.resume()
+    }
+    
+    func getUser(completion: @escaping () -> Void) {
+        let orderURL = baseURL.appendingPathComponent("auth/users/me/") //vytvoreni url
+        
+        //configurace urlRequest
+        var request = URLRequest(url: orderURL)
+        request.httpMethod = "GET"
+        request.setValue("Token \(UserController.token ?? "")", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let jsonDecoder = JSONDecoder()
+                if let data = data, let user = try? jsonDecoder.decode(ComUser.self, from: data) {
+                    print("getUser checkpoint")
+                    self.getMyBoxes { (myBoxes) in
+                        self.user = User(id: user.id, name: user.name, email: user.email, password: "", Boxes: myBoxes ?? [])
+                        completion()
+                    }
+            }
+        }
+        task.resume()
+    }
+    
+    private func getMyBoxes(completion: @escaping ([Box]?) -> Void) {
+        let orderURL = baseURL.appendingPathComponent("user/boxes/") //vytvoreni url
+        
+        //configurace urlRequest
+        var request = URLRequest(url: orderURL)
+        request.httpMethod = "GET"
+        request.setValue("Token \(UserController.token ?? "")", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let jsonDecoder = JSONDecoder()
+            if let data = data, let userBoxes = try? jsonDecoder.decode([Box].self, from: data) {
+                print("getMyBoxes checkpoint")
+                completion(userBoxes)
             } else {
                 completion(nil)
             }
@@ -129,6 +154,18 @@ class UserController {
         task.resume()
     }
     
+    private func mergeBoxData() {
+        var all: [Box] = self.user?.Boxes ?? []
+        
+        for box in nearbyBoxes {
+            all.removeAll{$0.id == box.id}
+            all.append(box)
+        }
+        all.reverse()
+        self.allBoxes = all
+    }
+    
+    /*
     func updateUser(user: User, completion: @escaping (User?) -> Void) {
         let orderURL = baseURL.appendingPathComponent("auth/users/\(user.id)/update") //vytvoreni url
         
@@ -154,80 +191,106 @@ class UserController {
         task.resume()
     }
     
-    func unlockBox(boxID: Int) {
-        let orderURL = baseURL.appendingPathComponent("box/\(boxID)/unlock") //vytvoreni url
+ */
+    
+    func unlockBox(boxID: Int, competion: @escaping (Bool) -> Void) {
+        let orderURL = baseURL.appendingPathComponent("box/\(boxID)/unlock/") //vytvoreni url
         
         //configurace urlRequest
-        var request = URLRequest(url: orderURL)
-        request.httpMethod = "POST"
-        request.setValue("Token \(UserController.token!)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask(with: request)
-        task.resume()
-    }
-    
-    func borrowBox(boxID: Int) {
-        let orderURL = baseURL.appendingPathComponent("box/\(boxID)/borrow") //vytvoreni url
-        
-        //configurace urlRequest
-        var request = URLRequest(url: orderURL)
-        request.httpMethod = "POST"
-        request.setValue("Token \(UserController.token!)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask(with: request)
-        task.resume()
-    }
-    
-    func returnBox(boxID: Int) {
-        let orderURL = baseURL.appendingPathComponent("box/\(boxID)/return") //vytvoreni url
-        
-        //configurace urlRequest
-        var request = URLRequest(url: orderURL)
-        request.httpMethod = "POST"
-        request.setValue("Token \(UserController.token!)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask(with: request)
-        task.resume()
-    }
-    
-    func getNearby() {
-        let orderURL = baseURL.appendingPathComponent("boxes")
-        
         var request = URLRequest(url: orderURL)
         request.httpMethod = "GET"
+        request.setValue("Token \(UserController.token ?? "")", forHTTPHeaderField: "Authorization")
         
-        //navazani spojeni se serverem - konfigurace + ziskani dat
-        let task = URLSession.shared.dataTask(with: orderURL) { (data, responce, error) in
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             let jsonDecoder = JSONDecoder()
-            if let data = data, let boxes = try? jsonDecoder.decode([Box].self, from: data) {
-                UserController.shared.nearbyBoxes = boxes
+            if let data = data, let _ = try? jsonDecoder.decode(Stav.self, from: data) {
+                print("unlock checkpoint")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.lockBox(boxID: boxID) { (success) in
+                        if success {
+                            competion(true)
+                        } else {
+                            competion(false)
+                        }
+                    }
+                }
+            } else {
+                competion(false)
             }
         }
-        //zahajeni spojeni
+        
+        task.resume()
+    }
+    
+    func lockBox(boxID: Int, competion: @escaping (Bool) -> Void) {
+        let orderURL = baseURL.appendingPathComponent("box/\(boxID)/lock/") //vytvoreni url
+        
+        //configurace urlRequest
+        var request = URLRequest(url: orderURL)
+        request.httpMethod = "GET"
+        request.setValue("Token \(UserController.token ?? "")", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let jsonDecoder = JSONDecoder()
+            if let data = data, let _ = try? jsonDecoder.decode(Stav.self, from: data) {
+                print("lock checkpoint")
+                competion(true)
+            } else {
+                competion(false)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func borrowBox(boxID: Int, competion: @escaping (Bool) -> Void) {
+        let orderURL = baseURL.appendingPathComponent("box/\(boxID)/borrow/") //vytvoreni url
+        
+        print("url \(orderURL)")
+        
+        //configurace urlRequest
+        var request = URLRequest(url: orderURL)
+        request.httpMethod = "GET"
+        request.setValue("Token \(UserController.token ?? "")", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let jsonDecoder = JSONDecoder()
+            if let data = data, let _ = try? jsonDecoder.decode(Stav.self, from: data) {
+                print("borrow checkpoint")
+                self.getUser {
+                    competion(true)
+                }
+            } else {
+                competion(false)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func returnBox(boxID: Int, competion: @escaping (Bool) -> Void) {
+        let orderURL = baseURL.appendingPathComponent("box/\(boxID)/return/") //vytvoreni url
+        
+        //configurace urlRequest
+        var request = URLRequest(url: orderURL)
+        request.httpMethod = "GET"
+        request.setValue("Token \(UserController.token ?? "")", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let jsonDecoder = JSONDecoder()
+            if let data = data, let _ = try? jsonDecoder.decode(Stav.self, from: data) {
+                self.getUser {
+                    competion(true)
+                }
+            } else {
+                competion(false)
+            }
+        }
+        
         task.resume()
     }
     
     func getBoxes() -> [Box] {
-        var all: [Box] = self.user?.Boxes ?? []
-        
-        for box in nearbyBoxes {
-            all.removeAll{$0.id == box.id}
-            all.append(box)
-        }
-        all.reverse()
-        return all
-    }
-    
-    func fetchTestData() {
-        self.user = User(id: 1,
-                         name: "Vladimir Ekart",
-                         email: "vladimir.ekart@email.cz",
-                         password: "MyPassword",
-                         Boxes: [Box(lattitude: 50.0998, longtitude: 14.3601, locked: true, name: "SmartBox", id: 1, curren_owner: 1),
-                                 Box(lattitude: 50.0510, longtitude: 14.3336, locked: true, name: "SmartBox 2", id: 2, curren_owner: 1)])
-        self.nearbyBoxes = [Box(lattitude: 50.0751, longtitude: 14.4375, locked: false, name: "MyBox", id: 3, curren_owner: nil),
-                            Box(lattitude: 50.0651, longtitude: 14.4000, locked: false, name: "PragueBox", id: 4, curren_owner: nil),
-                            Box(lattitude: 50.0998, longtitude: 14.3601, locked: true, name: "SmartBox", id: 1, curren_owner: nil),
-                            Box(lattitude: 50.0510, longtitude: 14.3336, locked: true, name: "SmartBox 2", id: 2, curren_owner: nil)]
+        return UserController.shared.allBoxes
     }
 }

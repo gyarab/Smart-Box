@@ -27,7 +27,7 @@ class BoxListCell: UITableViewCell {
     }
     
     func availabilitySet(_ box: Box) {
-        if box.locked {
+        if box.current_owner != nil {
             availabilityLabel.text = "Occupied"
             availabilityLabel.textColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
         } else {

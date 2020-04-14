@@ -17,22 +17,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func SignButtonTapped(_ sender: Any) {
         if UserController.offlineMode == false {
             if let email = emailTextField.text, let password = passwordTextField.text {
-                UserController.shared.loginUser(email: email, password: password) { (user) in
+                UserController.shared.loginUser(email: email, password: password, completion: { (success) in
                     DispatchQueue.main.async {
-                        if let user = user {
-                            UserController.shared.user = user
+                        if success {
                             print("connection successfull")
                             self.performSegue(withIdentifier: "loginSeque", sender: nil)
-                        } else {
-                            print("user not logged")
                         }
-                        
                     }
-                    
-                }
+                })
             }
         } else {
-            UserController.shared.fetchTestData()
+            //UserController.shared.fetchTestData()
             if emailTextField.text != "" && passwordTextField.text != "" {
                 UserController.shared.user!.email = emailTextField.text!
                 UserController.shared.user!.password = passwordTextField.text!
@@ -46,7 +41,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        UserController.shared.getNearby()
         
         updateUI()
         // Do any additional setup after loading the view.

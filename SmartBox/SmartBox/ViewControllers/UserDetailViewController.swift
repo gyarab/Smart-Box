@@ -30,6 +30,8 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBAction func cancelButtonAction(_ sender: Any) {
         NotificationCenter.default.post(name: UserDetailViewController.cancelDetailAction, object: nil)
     }
+    
+    /*
     @IBAction func emailEditAction(_ sender: Any) {
         UIView.animate(withDuration: 0.5, animations: {
             self.emailStack.alpha = 0
@@ -122,12 +124,13 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 UserController.shared.user = updatedUser
             }
             user = UserController.shared.user!
+            print("password updated \(user.password)")
         }
         currentPasswordTF.text = ""
         newPasswordTF.text = ""
     }
-    
-    var user: User = UserController.shared.user!
+    */
+    var user: User = UserController.shared.user ?? User(id: 0, name: "Loading User Failed", email: "no email", password: "", Boxes: [])
     let rowHeight = 80
     static let cancelDetailAction = Notification.Name("UserDetailViewController.cancelTapped")
     

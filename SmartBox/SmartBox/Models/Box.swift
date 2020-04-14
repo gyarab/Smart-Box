@@ -9,10 +9,14 @@
 import Foundation
 
 struct Box: Codable {
-    var lattitude: Float
-    var longtitude: Float
+    let id: Int
+    let lattitude: Double
+    let longtitude: Double
     var locked: Bool
     var name: String
-    let id: Int
-    let curren_owner: Int?
+    let current_owner: Int?
+}
+
+struct Stav: Codable {
+    let uspesne: String
 }

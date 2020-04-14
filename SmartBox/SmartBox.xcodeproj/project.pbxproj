@@ -173,8 +173,8 @@
 		F5BA8DF323CF366500904CD5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F53970CE23F0978F00FAEC54 /* LoginViewController.swift */,
 				F57582DF23FC963A00EFA3C4 /* RegisterViewController.swift */,
+				F53970CE23F0978F00FAEC54 /* LoginViewController.swift */,
 				F5BA8DF123CF357900904CD5 /* MapViewController.swift */,
 				F5680A2423D75BFE00CACEC7 /* BoxListViewController.swift */,
 				F5B40D2C23D8A1D100B1C0D1 /* BoxDetailViewController.swift */,

@@ -27,34 +27,39 @@ class BoxDetailViewController: UIViewController {
         transferToMaps()
     }
     @IBAction func unlockButtonTapped(_ sender: Any) {
-        print("open button tapped")
-        //open box process
-    }
-    @IBAction func borrowButtonTapped(_ sender: Any) {
-        if UserController.offlineMode == false {
-            if myBox() {
-                UserController.shared.returnBox(boxID: box!.id)
-            } else {
-                UserController.shared.borrowBox(boxID: box!.id)
-            }
-            UserController.shared.getUser { (user) in
-                UserController.shared.user = user
-            }
-        } else {
-            if myBox() {
-                UserController.shared.nearbyBoxes.removeAll{$0.id == self.box!.id}
-                box!.locked = false
-                UserController.shared.nearbyBoxes.append(box!)
-                UserController.shared.user?.Boxes.removeAll{$0.id == self.box!.id}
-            } else {
-                UserController.shared.nearbyBoxes.removeAll{$0.id == self.box!.id}
-                box!.locked = true
-                UserController.shared.nearbyBoxes.append(box!)
-                UserController.shared.user?.Boxes.append(self.box!)
+        if myBox() {
+            UserController.shared.unlockBox(boxID: box!.id) { (success) in
+                if success {
+                    print("unlock process succesful")
+                }
             }
         }
-        print("new index \(index!),\n all boxes \(UserController.shared.getBoxes())")
-        updateUI()
+    }
+    @IBAction func borrowButtonTapped(_ sender: Any) {
+        print("try borrow")
+        if myBox() {
+            UserController.shared.returnBox(boxID: box!.id, competion: { (success) in
+                DispatchQueue.main.async {
+                    if success {
+                        UserController.shared.loadAll { () in
+                            print("new index \(self.index!),\n all boxes \(UserController.shared.getBoxes())")
+                            self.updateUI()
+                        }
+                    }
+                }
+            })
+        } else if box?.current_owner == nil {
+            UserController.shared.borrowBox(boxID: box!.id, competion: { (success) in
+                DispatchQueue.main.async {
+                    if success {
+                        UserController.shared.loadAll { () in
+                            print("new index \(self.index!),\n all boxes \(UserController.shared.getBoxes())")
+                            self.updateUI()
+                        }
+                    }
+                }
+            })
+        }
     }
     
     var index: Int?
@@ -96,14 +101,16 @@ class BoxDetailViewController: UIViewController {
     }
     
     func updateUI() {
-        if myBox() {
-            borrowLabel.text = "Return"
-            unlockBcView.isHidden = false
-            borrowIcon.image = UIImage(systemName: "person.crop.circle.badge.minus")
-        } else {
-            unlockBcView.isHidden = true
-            borrowLabel.text = "Borrow"
-            borrowIcon.image = UIImage(systemName: "person.crop.circle.badge.plus")
+        DispatchQueue.main.async {
+            if self.myBox() {
+                self.borrowLabel.text = "Return"
+                self.unlockBcView.isHidden = false
+                self.borrowIcon.image = UIImage(systemName: "person.crop.circle.badge.minus")
+            } else {
+                self.unlockBcView.isHidden = true
+                self.borrowLabel.text = "Borrow"
+                self.borrowIcon.image = UIImage(systemName: "person.crop.circle.badge.plus")
+            }
         }
     }
     

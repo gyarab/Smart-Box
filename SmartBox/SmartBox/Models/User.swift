@@ -12,7 +12,7 @@ struct User: Codable {
     let id: Int
     var name: String
     var email: String
-    var password: String?
+    var password: String
     var Boxes: [Box]
     
     enum CodingKeys: String, CodingKey {
@@ -24,10 +24,10 @@ struct User: Codable {
     }
 }
 
-struct RegisterUser: Codable {
-    let name: String
-    let email: String
+struct ComUser: Codable {
     let id: Int
+    var name: String
+    var email: String
 }
 
 struct Token: Codable {

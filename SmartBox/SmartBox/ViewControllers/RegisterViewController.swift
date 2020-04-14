@@ -21,10 +21,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         if UserController.offlineMode == false {
             if let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
-                UserController.shared.registerUser(email: email, password: password, name: name) { (user) in
+                UserController.shared.registerUser(email: email, password: password, name: name, completion: { (success) in
                     DispatchQueue.main.async {
-                        if let user = user {
-                            UserController.shared.user = user
+                        if success {
                             print("connection successfull")
                             self.dismiss(animated: true) {
                                 previousController!.performSegue(withIdentifier: "loginSeque", sender: nil)
@@ -33,10 +32,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                             print("connection failed")
                         }
                     }
-                }
+                })
             }
         } else {
-            UserController.shared.fetchTestData()
+            //UserController.shared.fetchTestData()
             if let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
                 UserController.shared.user!.name = name
                 UserController.shared.user!.email = email

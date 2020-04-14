@@ -38,14 +38,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         NotificationCenter.default.addObserver(self, selector: #selector(unhighlightBox), name: BoxDetailViewController.cancelDetailAction, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideUserDetail), name: UserDetailViewController.cancelDetailAction, object: nil)
 
-        UserController.shared.getNearby { (boxes) in
-            DispatchQueue.main.async {
-                if let boxes = boxes {
-                    UserController.shared.nearbyBoxes = boxes
-                    print("boxes added from server")
-                }
-            }
-        }
         
         bcUserView.layer.cornerRadius = 10
         bcUserView.alpha = 0.90
@@ -56,6 +48,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         locationServicesCheck()
         centerMap()
+        
+        print("boxes map: \(UserController.shared.getBoxes())")
         showBoxes()
         
         addPanels()
@@ -174,6 +168,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @objc func unhighlightBox() {
         if let index = BoxListViewController.boxChosen {
             mapView.deselectAnnotation(annotations[index], animated: true)
+            self.showBoxes()
         }
     }
     
@@ -204,13 +199,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func showBoxes() {
+        mapView.removeAnnotations(annotations)
+        annotations.removeAll()
+        print(annotations)
         for box in UserController.shared.getBoxes() {
             let annotation = MKPointAnnotation()
             annotation.title = box.name
             annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(box.lattitude), longitude: CLLocationDegrees(box.longtitude))
-            mapView.addAnnotation(annotation)
             self.annotations.append(annotation)
         }
+        mapView.addAnnotations(annotations)
+        print("map boxes reloaded")
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
