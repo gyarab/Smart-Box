@@ -151,24 +151,37 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func moveToBox() {
-        let index = BoxListViewController.boxChosen!
-        let boxes = UserController.shared.getBoxes()
-        let boxLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(boxes[index].lattitude), longitude: CLLocationDegrees(boxes[index].longtitude))
+        let boxChosen = BoxListViewController.boxChosen
+        let boxLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(boxChosen!.lattitude), longitude: CLLocationDegrees(boxChosen!.longtitude))
         mapView.setCenter(boxLocation, animated: true)
         let region = MKCoordinateRegion(center: boxLocation, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         mapView.setRegion(region, animated: true)
     }
     
     @objc func highlightBox() {
-        if let index = BoxListViewController.boxChosen {
-            mapView.selectAnnotation(annotations[index], animated: true)
+        if let boxChosen = BoxListViewController.boxChosen {
+            var index = 0
+            for box in UserController.shared.getBoxes() {
+                if box.id == boxChosen.id {
+                    mapView.selectAnnotation(annotations[index], animated: true)
+                    return
+                }
+                index += 1
+            }
         }
     }
     
     @objc func unhighlightBox() {
-        if let index = BoxListViewController.boxChosen {
-            mapView.deselectAnnotation(annotations[index], animated: true)
-            self.showBoxes()
+        if let boxChosen = BoxListViewController.boxChosen {
+            var index = 0
+            for box in UserController.shared.getBoxes() {
+                if box.id == boxChosen.id {
+                    mapView.selectAnnotation(annotations[index], animated: true)
+                    self.showBoxes()
+                    return
+                }
+                index += 1
+            }
         }
     }
     
@@ -213,12 +226,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        var index = 0
         for annotation in annotations {
             if annotation.coordinate.latitude == view.annotation?.coordinate.latitude && annotation.coordinate.longitude == view.annotation?.coordinate.longitude {
-                BoxListViewController.boxChosen = index
+                for box in UserController.shared.getBoxes() {
+                    if box.name == annotation.title && box.lattitude == annotation.coordinate.latitude && box.longtitude == annotation.coordinate.longitude {
+                        BoxListViewController.boxChosen = box
+                    }
+                }
             }
-            index += 1
         }
         moveToBox()
         NotificationCenter.default.post(name: BoxListViewController.tableCellAction, object: nil)

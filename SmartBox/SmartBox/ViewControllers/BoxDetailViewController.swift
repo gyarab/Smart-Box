@@ -74,8 +74,7 @@ class BoxDetailViewController: UIViewController {
     }
     
     @objc func initPanel() {
-        index = BoxListViewController.boxChosen
-        box = boxes[index!]
+        box = BoxListViewController.boxChosen
         nameLabel.text = box!.name
         locationLabel.text = String(box!.id)
         
