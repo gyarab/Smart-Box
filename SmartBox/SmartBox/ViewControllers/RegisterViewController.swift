@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
 
@@ -21,14 +22,22 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         if UserController.offlineMode == false {
             if let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
+                
+                let hud = JGProgressHUD(style: .light)
+                hud.textLabel.text = "Loading"
+                hud.show(in: self.view)
+                
                 UserController.shared.registerUser(email: email, password: password, name: name, completion: { (success) in
                     DispatchQueue.main.async {
                         if success {
+                            hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+                            hud.dismiss(afterDelay: 2.0)
                             print("connection successfull")
                             self.dismiss(animated: true) {
                                 previousController!.performSegue(withIdentifier: "loginSeque", sender: nil)
                             }
                         } else {
+                            hud.dismiss()
                             print("connection failed")
                         }
                     }

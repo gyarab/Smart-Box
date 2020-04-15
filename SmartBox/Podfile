@@ -9,5 +9,6 @@ target 'SmartBox' do
   # Pods for SmartBox
 
 pod 'FloatingPanel'
+pod 'JGProgressHUD'
 
 end

@@ -14,7 +14,7 @@ class BoxListViewController: UIViewController, UITableViewDataSource, UITableVie
     
     static let tableCellAction = Notification.Name("BoxListViewController.cellTapped")
     static var boxChosen: Box?
-    let boxes = UserController.shared.getBoxes()
+    var boxes: [Box] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +55,8 @@ class BoxListViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "boxListCell", for: indexPath) as! BoxListCell
         
+        boxes = UserController.shared.getBoxes()
+        
         let box = boxes[indexPath.row]
         
         cell.nameLabel.text = box.name
@@ -70,6 +72,7 @@ class BoxListViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        boxes = UserController.shared.getBoxes()
         BoxListViewController.boxChosen =  boxes[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: false)
         NotificationCenter.default.post(name: BoxListViewController.tableCellAction, object: nil)

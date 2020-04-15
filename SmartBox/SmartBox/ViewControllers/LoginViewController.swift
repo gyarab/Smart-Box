@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -17,12 +18,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func SignButtonTapped(_ sender: Any) {
         if UserController.offlineMode == false {
             if let email = emailTextField.text, let password = passwordTextField.text {
+                
+                let hud = JGProgressHUD(style: .light)
+                hud.textLabel.text = "Loading"
+                hud.show(in: self.view)
+                
                 UserController.shared.loginUser(email: email, password: password, completion: { (success) in
                     DispatchQueue.main.async {
                         if success {
+                            hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+                            hud.dismiss(afterDelay: 2.0)
                             print("connection successfull")
                             self.performSegue(withIdentifier: "loginSeque", sender: nil)
                         }
+                        hud.dismiss()
                     }
                 })
             }

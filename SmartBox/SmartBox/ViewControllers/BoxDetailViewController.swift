@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import JGProgressHUD
 
 class BoxDetailViewController: UIViewController {
     
@@ -28,44 +29,57 @@ class BoxDetailViewController: UIViewController {
     }
     @IBAction func unlockButtonTapped(_ sender: Any) {
         if myBox() {
+            showLoadingHud()
+            
             UserController.shared.unlockBox(boxID: box!.id) { (success) in
                 if success {
                     print("unlock process succesful")
+                    
+                    self.showSuccessHud()
+                } else {
+                    self.hud.dismiss()
                 }
             }
         }
     }
     @IBAction func borrowButtonTapped(_ sender: Any) {
         print("try borrow")
+        
         if myBox() {
+            showLoadingHud()
+            
             UserController.shared.returnBox(boxID: box!.id, competion: { (success) in
                 DispatchQueue.main.async {
                     if success {
+                        self.showSuccessHud()
                         UserController.shared.loadAll { () in
-                            print("new index \(self.index!),\n all boxes \(UserController.shared.getBoxes())")
                             self.updateUI()
                         }
+                    } else {
+                        self.hud.dismiss()
                     }
                 }
             })
         } else if box?.current_owner == nil {
+            showLoadingHud()
             UserController.shared.borrowBox(boxID: box!.id, competion: { (success) in
                 DispatchQueue.main.async {
                     if success {
+                        self.showSuccessHud()
                         UserController.shared.loadAll { () in
-                            print("new index \(self.index!),\n all boxes \(UserController.shared.getBoxes())")
                             self.updateUI()
                         }
+                    } else {
+                        self.hud.dismiss()
                     }
                 }
             })
         }
     }
     
-    var index: Int?
-    let boxes = UserController.shared.getBoxes()
     static let cancelDetailAction = Notification.Name("BoxDetailViewController.cancelTapped")
     var box: Box?
+    var hud: JGProgressHUD = JGProgressHUD(style: .light)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +113,20 @@ class BoxDetailViewController: UIViewController {
         updateUI()
     }
     
+    func showLoadingHud() {
+        hud.indicatorView = JGProgressHUDIndeterminateIndicatorView()
+        hud.textLabel.text = "Loading"
+        hud.show(in: self.view)
+    }
+    
+    func showSuccessHud() {
+        DispatchQueue.main.async {
+            self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+            self.hud.textLabel.text = "Success"
+            self.hud.dismiss(afterDelay: 1.0)
+        }
+    }
+    
     func updateUI() {
         DispatchQueue.main.async {
             if self.myBox() {
@@ -114,14 +142,14 @@ class BoxDetailViewController: UIViewController {
     }
     
     func transferToMaps() {
-        guard let index = index else { return }
-        let coordinates = CLLocationCoordinate2D(latitude: CLLocationDegrees(boxes[index].lattitude), longitude: CLLocationDegrees(boxes[index].longtitude))
+        guard let box = box else { return }
+        let coordinates = CLLocationCoordinate2D(latitude: CLLocationDegrees(box.lattitude), longitude: CLLocationDegrees(box.longtitude))
         let region = MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: region.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: region.span)]
         
         let placeMark = MKPlacemark(coordinate: coordinates)
         let mapItem = MKMapItem(placemark: placeMark)
-        mapItem.name = boxes[index].name
+        mapItem.name = box.name
         mapItem.openInMaps(launchOptions: options)
     }
     
