@@ -132,6 +132,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func defHidePanel(_ panel: FloatingPanelController) {
         hidePanel(panel)
         panelQuery.removeLast()
+        print("query remove: \(panelQuery.count)")
         if let lPanel = panelQuery.last { showPanel(lPanel) }
     }
     
@@ -139,6 +140,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         showPanel(panel)
         if let lPanel = panelQuery.last { hidePanel(lPanel) }
         panelQuery.append(panel)
+        print("query add: \(panelQuery.count)")
     }
     
     // MARK: - Map
@@ -176,7 +178,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             var index = 0
             for box in UserController.shared.getBoxes() {
                 if box.id == boxChosen.id {
-                    mapView.selectAnnotation(annotations[index], animated: true)
+                    mapView.deselectAnnotation(annotations[index], animated: true)
                     self.showBoxes()
                     return
                 }

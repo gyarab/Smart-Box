@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,21 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Wzy-dY-JTp">
-                                <rect key="frame" x="77.5" y="135" width="220" height="319.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="Wzy-dY-JTp">
+                                <rect key="frame" x="77.5" y="128" width="220" height="329.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="HaD-6n-PXU">
-                                        <rect key="frame" x="50" y="0.0" width="120" height="157.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="HaD-6n-PXU">
+                                        <rect key="frame" x="50" y="0.0" width="120" height="163.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6de-7J-ZoF">
-                                                <rect key="frame" x="0.0" y="1" width="120" height="117.5"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="6de-7J-ZoF">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="8pt-PT-6N1"/>
                                                     <constraint firstAttribute="width" secondItem="6de-7J-ZoF" secondAttribute="height" multiplier="1:1" id="Jq0-o4-zLk"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smart Box" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gR-9V-pPp">
-                                                <rect key="frame" x="6.5" y="131" width="107" height="26.5"/>
+                                                <rect key="frame" x="6.5" y="137" width="107" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qvg-Tv-elj">
-                                        <rect key="frame" x="0.0" y="182.5" width="220" height="68"/>
+                                        <rect key="frame" x="0.0" y="190.5" width="220" height="68"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w4M-ak-4DD">
                                                 <rect key="frame" x="0.0" y="0.0" width="220" height="34"/>
@@ -58,7 +58,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQN-8k-jDW">
-                                        <rect key="frame" x="41" y="275.5" width="138" height="44"/>
+                                        <rect key="frame" x="41" y="285.5" width="138" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="mPA-cv-D8h"/>
@@ -82,7 +82,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Wzy-dY-JTp" firstAttribute="top" secondItem="HNs-vN-fFH" secondAttribute="bottom" constant="135" id="D2f-RF-5qW"/>
+                            <constraint firstItem="Wzy-dY-JTp" firstAttribute="top" secondItem="HNs-vN-fFH" secondAttribute="bottom" constant="128" id="D2f-RF-5qW"/>
                             <constraint firstItem="JhA-7B-Ctp" firstAttribute="top" secondItem="Pxg-v0-7qZ" secondAttribute="bottom" constant="10" id="D47-OO-Gc6"/>
                             <constraint firstItem="Pxg-v0-7qZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tmp-Pq-FpY"/>
                             <constraint firstItem="Wzy-dY-JTp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="njd-9E-jGG"/>
@@ -90,6 +90,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="w4M-ak-4DD" id="tAZ-Ds-w6C"/>
+                        <outlet property="icon" destination="6de-7J-ZoF" id="Grh-xS-vrV"/>
                         <outlet property="passwordTextField" destination="3Ab-qn-Rdr" id="Yta-Wu-yxx"/>
                         <outlet property="signButton" destination="AQN-8k-jDW" id="o0D-ce-jNa"/>
                         <segue destination="8SG-6d-CWK" kind="presentation" identifier="loginSeque" modalPresentationStyle="fullScreen" id="p7w-Bk-Q9N"/>
@@ -253,7 +254,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="app.fill" catalog="system" width="64" height="56"/>
-        <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="icon" width="300" height="300"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
     </resources>
 </document>

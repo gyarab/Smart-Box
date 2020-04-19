@@ -14,6 +14,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signButton: UIButton!
+    @IBOutlet weak var icon: UIImageView!
     
     @IBAction func SignButtonTapped(_ sender: Any) {
         if UserController.offlineMode == false {
@@ -62,6 +63,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         signButton.layer.shadowOpacity = 0.15
         signButton.layer.shadowOffset = .zero
         signButton.layer.shadowRadius = 10
+        icon.layer.cornerRadius = 15
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
