@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3ylg)ohnhm@_*5wsg4qi+a6771z$h5*^v(4*+3+25p9i&b*rht'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['polar-plateau-63565.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['polar-plateau-63565.herokuapp.com']
 
 
 # Application definition

@@ -12,21 +12,18 @@ class UserManager(BaseUserManager):
         if not name:
             raise ValueError("User must have a name")
 
-        try:
-            user = self.model(
-                email=self.normalize_email(email)
-            )
-            user.username = email
-            user.name = name
-            user.set_password(password)
-            user.admin = is_admin
-            user.staff = is_staff
-            user.active = is_active
-            user.save()
-            return user
-        except IntegrityError as e:
-            message = '^&*^*&Database error:' + str(e.__cause__)
-            print(message)
+        user = self.model(
+            email=self.normalize_email(email)
+        )
+        user.username = email
+        user.name = name
+        user.set_password(password)
+        user.admin = is_admin
+        user.staff = is_staff
+        user.active = is_active
+        user.boxes = 'a'
+        user.save()
+        return user
 
 class User(AbstractUser):
     name = models.CharField(max_length=50)

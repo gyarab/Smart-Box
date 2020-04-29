@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from django.core import serializers
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+import json
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -27,16 +28,16 @@ def lock(request, id):
     data = r.json()
     current_user_id = data['id']
     try:
-        users_box = Box.objects.get(current_owner=User.objects.get(id=current_user_id))
+        users_box = Box.objects.get(current_owner=User.objects.get(id=current_user_id), id=box_id)
     except:
-        return JsonResponse({'nelze': 'zamknout'})
+        return JsonResponse({'nelze': 'zamknout kod1'})
     if box == users_box:
         updated_box = BoxSerializer(box, data={'locked': True}, partial=True)
         if updated_box.is_valid():
             updated_box.save()
             return JsonResponse({'uspesne': 'zamknuto'})
     else:
-        return JsonResponse({'nelze': 'zamknout'})
+        return JsonResponse({'nelze': 'zamknout kod2'})
 
 @csrf_exempt
 def unlock(request, id):
@@ -47,16 +48,16 @@ def unlock(request, id):
     data = r.json()
     current_user_id = data['id']
     try:
-        users_box = Box.objects.get(current_owner=User.objects.get(id=current_user_id))
+        users_box = Box.objects.get(current_owner=User.objects.get(id=current_user_id), id=box_id)
     except:
-        return JsonResponse({'nelze': 'odemknout'})
+        return JsonResponse({'nelze': 'odemknout kod3'})
     if box == users_box:
         updated_box = BoxSerializer(box, data={'locked': False}, partial=True)
         if updated_box.is_valid():
             updated_box.save()
             return JsonResponse({'uspesne': 'odemknuto'})
     else:
-        return JsonResponse({'nelze': 'odemknout'})
+        return JsonResponse({'nelze': 'odemknout kod4'})
 
 def locked(request, id):
     permission_classes = ()
@@ -78,7 +79,7 @@ def borrow(request, id):
         box.save()
         return JsonResponse({'uspesne': 'pujceno'})
     else:
-        return JsonResponse({'nelze': 'pujcit'})
+        return JsonResponse({'nelze': 'pujcit kod5'})
 
 @csrf_exempt   
 def return_box(request, id):
@@ -89,15 +90,15 @@ def return_box(request, id):
     data = r.json()
     current_user_id = data['id']
     try:
-        users_box = Box.objects.get(current_owner=User.objects.get(id=current_user_id))
+        users_box = Box.objects.get(current_owner=User.objects.get(id=current_user_id), id=box_id)
     except:
-        return JsonResponse({'nelze': 'vratit'})
+        return JsonResponse({'nelze': 'vratit kod6'})
     if box == users_box:
         box.current_owner = None
         box.save()
         return JsonResponse({'uspesne': 'vraceno'})
     else:
-        return JsonResponse({'nelze': 'vratit'})
+        return JsonResponse({'nelze': 'vratit kod7'})
 
 @csrf_exempt
 def users_boxes(request):
@@ -106,8 +107,10 @@ def users_boxes(request):
     data = r.json()
     current_user_id = data['id']
     try:
+        #queryset = Box.objects.all()
         queryset = Box.objects.filter(current_owner=User.objects.get(id=current_user_id))
-        qs_json = serializers.serialize('json', queryset)
-        return HttpResponse(qs_json, content_type='application/json')
-    except:
-        return JsonResponse({'nelze': 'vratit boxy'})
+        qs_json = BoxSerializer(queryset, many=True).data
+        return HttpResponse(json.dumps(qs_json), content_type='application/json')
+    except Exception as e:
+        return HttpResponse(e)
+        

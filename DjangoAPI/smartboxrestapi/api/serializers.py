@@ -9,4 +9,4 @@ class UserSerializer(serializers.ModelSerializer):
 class BoxSerializer(serializers.ModelSerializer):
     class Meta:
         model = Box
-        fields = '__all__'
+        fields = ['id', 'lattitude', 'longtitude', 'locked', 'name', 'current_owner']
